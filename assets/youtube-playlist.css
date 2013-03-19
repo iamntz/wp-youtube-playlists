@@ -1,3 +1,8 @@
-.youtube-playlist {
-  
+.yt-playlist {
+
 }
+
+  .yt-playlist .bigView {
+    background:#ccc;
+    height:300px;
+  }

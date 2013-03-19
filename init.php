@@ -32,15 +32,14 @@ class YoutubeEmbeds{
       parse_str( $url['query'], $query );
       wp_enqueue_style( 'youtube-playlist' );
       wp_enqueue_script( 'youtube-playlist' );
-      // http://gdata.youtube.com/feeds/api/playlists/{$query['list']}/?v=2&alt=json&feature=plc
       ob_start();
       ?>
-      <div class="youtube-playlist" data-youtube-list-id="<?php echo $query['list'] ?>">
-        <div class="preview"></div>
+      <div class="yt-playlist" data-youtube-list-id="http://gdata.youtube.com/feeds/api/playlists/<?php echo $query['list'] ?>/?v=2&alt=json&feature=plc">
+        <div class="bigView"></div>
         <div class="pagination"></div>
-        <div class="list"></div>
-        <div class="templates">
+        <div class="list" id="yt-playlist"></div>
 
+        <div class="templates">
 
           <script type="text/template" id="yp-playlist-big-player">
             <div class="title"><%= title %></div>
@@ -49,16 +48,16 @@ class YoutubeEmbeds{
           </script><!-- /#yp-playlist-big-player template -->
 
 
-          <script type="text/template" id="yt-playlist-single-element">
-            <div class="preview">
+          <script type="text/template" id="yt-playlist-item">
+            <a class="preview" href="<%= youtube_id %>" target="_blank">
               <div class="thumb">
-                <img src="<%= thumb %>">
+                <img src="<%= thumbs[<?php echo apply_filters('yt-playlist:thumb_size', 1 ) ?>]['url'] %>">
                 <span class="duration"><%= duration %></span>
               </div>
               <div class="title"><%= title %></div>
               <div class="subtitle"><%= subtitle %></div>
-            </div>
-          </script><!-- /#yt-playlist-single-element template -->
+            </a>
+          </script><!-- /#yt-playlist-item template -->
 
 
           <script type="text/template" id="yt-playlist-pagination">
