@@ -44,18 +44,18 @@ class YoutubeEmbeds{
           <script type="text/template" id="yp-playlist-big-player">
             <div class="title"><%= title %></div>
             <div class="subtitle"><%= subtitle %></div>
-            <div class="embed" data-youtube-id="<%= youtube_id %>"></div>
+            <div class="embed"><div id="<%= embed_id %>"></div></div>
           </script><!-- /#yp-playlist-big-player template -->
 
 
           <script type="text/template" id="yt-playlist-item">
-            <a class="preview" href="<%= youtube_id %>" target="_blank">
+            <a class="preview" href="<%= youtube_url %>" target="_blank" data-youtube-id=<%= youtube_id %>>
               <div class="thumb">
                 <img src="<%= thumbs[<?php echo apply_filters('yt-playlist:thumb_size', 1 ) ?>]['url'] %>">
                 <span class="duration"><%= duration %></span>
               </div>
               <div class="title"><%= title %></div>
-              <div class="subtitle"><%= subtitle %></div>
+              <div class="description"><%= excerpt %></div>
             </a>
           </script><!-- /#yt-playlist-item template -->
 

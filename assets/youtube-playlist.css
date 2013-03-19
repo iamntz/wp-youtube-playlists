@@ -2,7 +2,61 @@
 
 }
 
-  .yt-playlist .bigView {
-    background:#ccc;
-    height:300px;
+  .yt-playlist .bigView .embed {
+    height:510px;
+    margin:1em 0;
+  }
+
+  .yt-playlist .bigView .title {
+    color:#41a2b1;
+    font-size:16px;
+    font-weight:700;
+  }
+  .yt-playlist .bigView .subtitle {
+    margin:.5em 0;
+    color:#5f6062;
+  }
+#yt-playlist {
+  overflow:hidden;
+  margin-left:-25px;
+}
+  .yt-playlist-item {
+    float:left;
+    width:210px;
+    margin-left:21px;
+    margin-bottom:20px;
+    padding:2px;
+    -webkit-transition:all 0.3s ease;
+    -moz-transition:all 0.3s ease;
+    -o-transition:all 0.3s ease;
+    transition:all 0.3s ease;
+  }
+  .yt-playlist-item.active,
+  .yt-playlist-item:hover {
+    background:#c9dadd;
+  }
+  .yt-playlist-item:nth-child(3n+1){
+    clear:left;
+  }
+  .yt-playlist-item img {
+    width:100%;
+    height:auto;
+    display:block;
+  }
+  .yt-playlist-item .thumb {
+    position:relative;
+    margin-bottom:.5em;
+  }
+  .yt-playlist-item .duration {
+    position:absolute;
+    bottom:0;
+    right:0;
+    background:#000;
+    background:rgba(0, 0, 0, .8);
+    padding:2px 5px;
+    color:#fff;
+  }
+  .yt-playlist-item a {
+    color:#5f6062;
+    text-decoration:none;
   }
