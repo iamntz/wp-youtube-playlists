@@ -138,11 +138,13 @@ jQuery(document).ready(function($){
           movieContainerID = 'video-' + Math.round( Math.random() * 1000000 );
 
       var parsedTemplate =  _.template( tpl, {
-        title   : this.model.get('title'),
-        subtitle: this.model.get('subtitle'),
-        embed_id: movieContainerID
+        title      : this.model.get('title'),
+        description: this.model.get('description'),
+        embed_id   : movieContainerID
       });
+      console.log(this.model.get('description'));
 
+      console.log(this.model);
       $('.bigView').empty().append(parsedTemplate);
 
       var playerVars = $.extend({
@@ -173,7 +175,7 @@ jQuery(document).ready(function($){
       if( e.type == 'click' ){
         $('body, html').animate({
           scrollTop:0
-        })
+        });
       }
       
     }//loadMovie
@@ -196,7 +198,7 @@ jQuery(document).ready(function($){
 
         duration = str_pad_left(minutes, '0', 2) + ':' + str_pad_left(seconds, '0', 2);
         var url = YT_Playlist.parseURL( e.link[0].href ),
-            summary = e.media$group.media$description.$t;
+            description = e.media$group.media$description.$t;
 
         return {
           youtube_id: url.params.v,
@@ -204,8 +206,8 @@ jQuery(document).ready(function($){
           thumbs     : e.media$group.media$thumbnail,
           duration   : duration,
           title      : e.title.$t,
-          excerpt    : summary.substr(0, summary.lastIndexOf( ' ', 50 ) ) + ' &#0133;',
-          description: e.media$group.media$description.$t
+          excerpt    : description.substr(0, description.lastIndexOf( ' ', 100 ) ) + ' &#0133;',
+          description: description
         };
       } );
       YT_Playlist.App = new YT_Playlist.Views.Playlist( items );

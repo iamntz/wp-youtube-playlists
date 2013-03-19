@@ -43,7 +43,7 @@ class YoutubeEmbeds{
 
           <script type="text/template" id="yp-playlist-big-player">
             <div class="title"><%= title %></div>
-            <div class="subtitle"><%= subtitle %></div>
+            <div class="subtitle"><%= description %></div>
             <div class="embed"><div id="<%= embed_id %>"></div></div>
           </script><!-- /#yp-playlist-big-player template -->
 
@@ -55,7 +55,7 @@ class YoutubeEmbeds{
                 <span class="duration"><%= duration %></span>
               </div>
               <div class="title"><%= title %></div>
-              <div class="description"><%= excerpt %></div>
+              <div class="subtitle"><%= excerpt %></div>
             </a>
           </script><!-- /#yt-playlist-item template -->
 
