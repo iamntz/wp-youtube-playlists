@@ -207,7 +207,7 @@ jQuery(document).ready(function($){
           duration   : duration,
           title      : e.title.$t,
           excerpt    : description.substr(0, description.lastIndexOf( ' ', 100 ) ) + ' &#0133;',
-          description: description
+          description: description.replace( /\r?\n/g, "<br>")
         };
       } );
       YT_Playlist.App = new YT_Playlist.Views.Playlist( items );
