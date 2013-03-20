@@ -1,21 +1,16 @@
-.yt-playlist {
-
+.yt-playlist .bigView .embed {
+  margin:1em 0;
 }
 
-  .yt-playlist .bigView .embed {
-    height:510px;
-    margin:1em 0;
-  }
-
-  .yt-playlist .bigView .title {
-    color:#41a2b1;
-    font-size:16px;
-    font-weight:700;
-  }
-  .yt-playlist .bigView .subtitle {
-    margin:.5em 0;
-    color:#5f6062;
-  }
+.yt-playlist .bigView .title {
+  color:#41a2b1;
+  font-size:16px;
+  font-weight:700;
+}
+.yt-playlist .bigView .description {
+  margin:.5em 0;
+  color:#5f6062;
+}
 #yt-playlist {
   overflow:hidden;
   margin-left:-25px;

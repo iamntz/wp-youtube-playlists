@@ -142,9 +142,7 @@ jQuery(document).ready(function($){
         description: this.model.get('description'),
         embed_id   : movieContainerID
       });
-      console.log(this.model.get('description'));
-
-      console.log(this.model);
+      
       $('.bigView').empty().append(parsedTemplate);
 
       var playerVars = $.extend({
@@ -178,6 +176,7 @@ jQuery(document).ready(function($){
         });
       }
       
+      $( e.currentTarget ).parent().addClass('active').siblings().removeClass('active');
     }//loadMovie
   });
 

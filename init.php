@@ -34,7 +34,7 @@ class YoutubeEmbeds{
       wp_enqueue_script( 'youtube-playlist' );
       ob_start();
       ?>
-      <div class="yt-playlist" data-youtube-list-id="http://gdata.youtube.com/feeds/api/playlists/<?php echo $query['list'] ?>/?v=2&alt=json&feature=plc">
+      <div class="yt-playlist" data-youtube-list-id="http://gdata.youtube.com/feeds/api/playlists/<?php echo $query['list'] ?>/?v=2&amp;alt=json&amp;feature=plc">
         <div class="bigView"></div>
         <div class="pagination"></div>
         <div class="list" id="yt-playlist"></div>
@@ -42,9 +42,9 @@ class YoutubeEmbeds{
         <div class="templates">
 
           <script type="text/template" id="yp-playlist-big-player">
-            <div class="title"><%= title %></div>
-            <div class="subtitle"><%= description %></div>
-            <div class="embed"><div id="<%= embed_id %>"></div></div>
+            <div class="title"><%= <?php echo apply_filters( 'yt-playlist:big-player-title', 'title' ); ?> %></div>
+            <div class="description"><%= <?php echo apply_filters( 'yt-playlist:big-player-description', 'description' ) ?> %></div>
+            <div class="embed" style="height:<?php echo apply_filters( 'yt-playlist:big-player-height', '510') ?>px"><div id="<%= embed_id %>"></div></div>
           </script><!-- /#yp-playlist-big-player template -->
 
 
@@ -54,8 +54,8 @@ class YoutubeEmbeds{
                 <img src="<%= thumbs[<?php echo apply_filters('yt-playlist:thumb_size', 1 ) ?>]['url'] %>">
                 <span class="duration"><%= duration %></span>
               </div>
-              <div class="title"><%= title %></div>
-              <div class="subtitle"><%= excerpt %></div>
+              <div class="title"><%= <?php echo apply_filters( 'yt-playlist:thumb-title', 'title' ); ?> %></div>
+              <div class="description"><%= <?php echo apply_filters( 'yt-playlist:thumb-description', 'excerpt' ); ?> %></div>
             </a>
           </script><!-- /#yt-playlist-item template -->
 
