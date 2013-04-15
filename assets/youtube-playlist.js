@@ -46,7 +46,7 @@ jQuery(document).ready(function($){
     defaults : {
       youtube_id : '',
       thumbs     : [],
-      duration   : '',
+      duration   : -1,
       title      : '',
       subtitle   : '',
       youtube_url: '',
@@ -97,6 +97,7 @@ jQuery(document).ready(function($){
     ,render: function(){
 
       _.each( this.collection.models, function( item ){
+        if( item.get('duration') == -1 ){ return; }
         this.renderItem( item );
       }, this);
 
@@ -191,19 +192,15 @@ jQuery(document).ready(function($){
 
     $.getJSON(playlistURL, function(json){
       var items = json.feed.entry.map( function( e ){
-        var duration = 'n/a', minutes, seconds, url, description = '';
+        if( e.app$control && e.app$control.yt$state.name == 'failed' ){ return null; }
 
-        if( typeof e.media$group.yt$duration != 'undefined' ){
-          duration = e.media$group.yt$duration.seconds;
-          minutes  = Math.floor( duration / 60 );
-          seconds  = duration - minutes * 60;
-          duration = str_pad_left(minutes, '0', 2) + ':' + str_pad_left(seconds, '0', 2);
-        }else {
-          return;
-        }
+        var duration = e.media$group.yt$duration.seconds,
+            minutes  = Math.floor( duration / 60 ),
+            seconds  = duration - minutes * 60;
 
-        url = YT_Playlist.parseURL( e.link[0].href );
-        description = e.media$group.media$description.$t;
+        duration = str_pad_left(minutes, '0', 2) + ':' + str_pad_left(seconds, '0', 2);
+        var url = YT_Playlist.parseURL( e.link[0].href ),
+            description = e.media$group.media$description.$t;
 
         return {
           youtube_id: url.params.v,
@@ -215,6 +212,7 @@ jQuery(document).ready(function($){
           description: description.replace( /\r?\n/g, "<br>")
         };
       } );
+
       YT_Playlist.App = new YT_Playlist.Views.Playlist( items );
 
       YT_Playlist.Routes = new YT_Playlist.Router();
