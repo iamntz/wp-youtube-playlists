@@ -191,13 +191,19 @@ jQuery(document).ready(function($){
 
     $.getJSON(playlistURL, function(json){
       var items = json.feed.entry.map( function( e ){
-        var duration = e.media$group.yt$duration.seconds,
-            minutes  = Math.floor( duration / 60 ),
-            seconds  = duration - minutes * 60;
+        var duration = 'n/a', minutes, seconds, url, description = '';
 
-        duration = str_pad_left(minutes, '0', 2) + ':' + str_pad_left(seconds, '0', 2);
-        var url = YT_Playlist.parseURL( e.link[0].href ),
-            description = e.media$group.media$description.$t;
+        if( typeof e.media$group.yt$duration != 'undefined' ){
+          duration = e.media$group.yt$duration.seconds;
+          minutes  = Math.floor( duration / 60 );
+          seconds  = duration - minutes * 60;
+          duration = str_pad_left(minutes, '0', 2) + ':' + str_pad_left(seconds, '0', 2);
+        }else {
+          return;
+        }
+
+        url = YT_Playlist.parseURL( e.link[0].href );
+        description = e.media$group.media$description.$t;
 
         return {
           youtube_id: url.params.v,
