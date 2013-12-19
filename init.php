@@ -1,7 +1,7 @@
 <?php namespace ntz;
 /*
 Plugin Name: Ntz Youtube Playlist Embed
-Version: 0.1
+Version: 0.1.1
 Description: Easily embed youtube playlists on your WordPress site
 Author: Ionuț Staicu
 */
@@ -26,7 +26,7 @@ class YoutubeEmbeds{
     $id = html_entity_decode( $id );
     preg_match ( $this->url_regex, $id, $detect_url );
     if( !is_array( $detect_url ) || empty( $detect_url ) ){
-      //  TODO: make this work without full url? 
+      //  TODO: make this work without full url?
     }else {
       $url = parse_url( $id );
       parse_str( $url['query'], $query );
@@ -43,8 +43,8 @@ class YoutubeEmbeds{
 
           <script type="text/template" id="yp-playlist-big-player">
             <div class="title"><%= <?php echo apply_filters( 'yt-playlist:big-player-title', 'title' ); ?> %></div>
-            <div class="description"><%= <?php echo apply_filters( 'yt-playlist:big-player-description', 'description' ) ?> %></div>
             <div class="embed" style="height:<?php echo apply_filters( 'yt-playlist:big-player-height', '510') ?>px"><div id="<%= embed_id %>"></div></div>
+            <div class="description"><%= <?php echo apply_filters( 'yt-playlist:big-player-description', 'description' ) ?> %></div>
           </script><!-- /#yp-playlist-big-player template -->
 
 
@@ -61,12 +61,12 @@ class YoutubeEmbeds{
 
 
           <script type="text/template" id="yt-playlist-pagination">
-            
+
           </script><!-- /#yt-playlist-pagination template -->
 
         </div>
       </div>
-      <?php 
+      <?php
       $markup = ob_get_clean();
       return $markup;
     }
