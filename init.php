@@ -34,7 +34,7 @@ class YoutubeEmbeds{
       wp_enqueue_script( 'youtube-playlist' );
       ob_start();
       ?>
-      <div class="yt-playlist" data-youtube-list-id="http://gdata.youtube.com/feeds/api/playlists/<?php echo $query['list'] ?>/?v=2&amp;alt=json&amp;feature=plc">
+      <div class="yt-playlist" data-youtube-list-id="//gdata.youtube.com/feeds/api/playlists/<?php echo $query['list'] ?>/?v=2&amp;alt=json&amp;feature=plc">
         <div class="bigView"></div>
         <div class="pagination"></div>
         <div class="list" id="yt-playlist"></div>
