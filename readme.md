@@ -1,3 +1,9 @@
+## Broken plugin
+
+Due to Youtube API changes, this plugin no longer works. Maybe I'll fix it sometime in the future (PR welcome!), but you'd better search for other alternatives.
+
+-----
+
 ### Embed Youtube Playlist on WordPress posts
 
 `[yt_playlist id="http://www.youtube.com/playlist?list=PLAFF87E4DC940D286"]`
